@@ -7,8 +7,8 @@ stage = "dev"
 # usually does not need to be a a big instance - you'd be suprised with what you
 # can do with a small instance
 instance_type = "t2.micro"
-# the elastic ip address that you manually created in the AWS console
-http_server_elastic_ip_allocation_id = "13.37.103.197"
+# the elastic ip address allocation id that you manually created in the AWS console
+http_server_elastic_ip_allocation_id = "eipalloc-0f6af58c46f0731c6"
 # again, you'd be suprised what you can do with a small server
 rds_instance_type = "db.t2.micro"
 database_user = "app_db_user"
