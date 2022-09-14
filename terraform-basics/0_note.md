@@ -103,6 +103,8 @@ Generate key pair:
 ```
 ssh-keygen -t rsa -b 4096 -m pem -f _file_name_ && openssl rsa -in _file_name_ -outform pem && chmod 400 _file_name_
 ```
+ssh-keygen -t rsa -b 4096 -m pem -f phuc_edu && openssl rsa -in phuc_edu -outform pem && chmod 400 phuc_edu
+
 SSH to the instance:
 ```
  ssh -i "aws_server" ubuntu@ec2-13-41-211-7.eu-west-2.compute.amazonaws.com
