@@ -1,7 +1,6 @@
 ---
-
 - name: add nodejs repo
-  shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash
+  shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash
 
 - name: Install node.js
   become: yes
