@@ -1,0 +1,38 @@
+---
+- name: clone repo
+  git:
+    repo: 'https://github.com/{{ github_user }}/{{ app_name }}.git'
+    dest: /home/{{ application_user }}/{{ app_name }}
+    update: yes  # Does a git pull if the repo already exists
+
+- name: install modules in a virtualenv
+  pip:
+    requirements: /home/{{ application_user }}/{{ app_name }}/requirements.txt
+    virtualenv: /home/{{ application_user }}/{{ app_name }}/env
+    virtualenv_python: python3.7
+
+- name: execute db init script
+  script:  /home/{{ application_user }}/{{ app_name }}/init_db.py
+
+# Configure app systemd service and nginx
+- name: copy template systemd service config
+  become: yes
+  copy:
+    src: .service
+    dest: /etc/systemd/system/{{ app_name }}.service
+
+- name: start systemd app service
+  become: yes
+  systemd: name={{ app_name }}.service state=restarted enabled=yes
+
+- name: Copy nginx app server block
+  become: yes
+  template:
+    src: app.conf
+    dest: /etc/nginx/conf.d/app.conf
+  notify: reload nginx
+
+- name: open firewall for nginx
+  ufw:
+    rule: allow
+    name: Nginx Full

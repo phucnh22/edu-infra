@@ -48,7 +48,7 @@ ansible-playbook -i hosts install-nginx-and-certs.yml
 ```
 
 
-# 1. Ansibles
+## 1. Ansibles
 #### Used modules:
 - `apt`: Manages apt packages (Ubuntu)
 (https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html)
@@ -59,4 +59,17 @@ ansible-playbook -i hosts install-nginx-and-certs.yml
   - `block`: The text to insert inside the marker lines
   - `dest/path`: The file to modify
 
-- If package installation is incorrect -> need to uninstall the package manually 
+
+## 2. Flash app:
+Reference:
+- https://www.kevinlondon.com/2016/09/19/devops-from-scratch-pt-1
+- https://github.com/brennv/flask-ansible-example
+
+NginX
+
+- `proxy_set_header X-Real-IP $remote_addr`:
+
+- What is sites-available and site-enabled:
+  - The difference is that virtual sites listed in the sites-enabled directory are served by Apache. In the sites-available directory there are the virtual sites that exist on your server, but people can't access them because they are not enabled yet [Source](https://stackoverflow.com/questions/21812360/what-is-the-difference-between-the-sites-enabled-and-sites-available-directo)
+
+- https://www.oreilly.com/library/view/nginx-cookbook/9781492049098/ch01.html
