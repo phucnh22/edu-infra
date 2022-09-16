@@ -58,3 +58,5 @@ ansible-playbook -i hosts install-nginx-and-certs.yml
 - `blockinfile`:  insert/update/remove a block of multi-line text surrounded by customizable marker lines
   - `block`: The text to insert inside the marker lines
   - `dest/path`: The file to modify
+
+- If package installation is incorrect -> need to uninstall the package manually 
