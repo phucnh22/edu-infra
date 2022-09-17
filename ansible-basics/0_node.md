@@ -15,7 +15,11 @@ $ sudo apt-get install ansible -y
 ```
 - Copy the SSH key to ansible folder
 ```
-cp /mnt/C/Users/Admin/.ssh/phuc-edu.pem /home/phucnh22/edu-infra/ansible-basics/ghost-blog/ansible/ssh_keys/phuc-edu.pem
+cp /mnt/c/Users/Admin/.ssh/phuc_edu.pem /home/phucnh22/edu-infra/ansible-basics/ghost-blog/ansible/ssh_keys/phuc_edu.pem
+```
+- After copying, give root access to the key:
+```
+sudo chmod 600 /home/phucnh22/edu-infra/ansible-basics/ghost-blog/ansible/ssh_keys/phuc_edu.pem
 ```
 
 #### In `/terraform` folder:
@@ -38,15 +42,19 @@ it behind an nginx reverse proxy
 ```
 ansible-playbook -i hosts machine-initial-setup.yml
 ```
-  - Update apt for Ubuntu
-  - Install packages: [htop, git]
-  - Add ssh_keys
-
 - Running the nginx roles to install nginx and certificate
 ```
 ansible-playbook -i hosts install-nginx-and-certs.yml
 ```
+- Running the application roles to install the application to the webserver
+```
+ansible-playbook -i hosts install-app.yml
+```
 
+2.
+
+To ssh to the EC2:
+`ssh -i "phuc_edu.pem" ubuntu@phucnh22.site`
 
 ## 1. Ansibles
 #### Used modules:

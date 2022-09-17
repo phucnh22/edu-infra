@@ -9,5 +9,5 @@ ssl_email: phucnguyen22121996@gmail.com
 # for use in the application role
 database_user: app_db_user
 database_password: strongpassword123
-database_name: ghostblogdevappdb 
-database_host: ghostblogdevappdb.cletojvm70fs.eu-west-3.rds.amazonaws.com ## database endpoint - know after deploy terraform
+database_name: flaskappdevappdb 
+database_host: flaskappdevappdb.cletojvm70fs.eu-west-3.rds.amazonaws.com ## database endpoint - know after deploy terraform
