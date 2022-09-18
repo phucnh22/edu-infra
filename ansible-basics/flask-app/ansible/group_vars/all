@@ -1,6 +1,6 @@
 ---
 # For setting up the ssl certs
-domain_name: phucnh22.site
+domain_name: phucnh22.online
 ssl_email: phucnguyen22121996@gmail.com
 
 # an email address where Certbot can send urgent notices about the domain or registration.

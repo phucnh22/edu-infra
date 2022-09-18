@@ -1,4 +1,9 @@
 ---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+
 - name: ensure a directory exists or create it
   file: 
     path: /home/ubuntu/edu-flask-app
@@ -37,7 +42,7 @@
 # Configure app systemd service and nginx
 - name: copy template systemd service config
   become: yes
-  template:
+  copy:
     src: .service
     dest: /etc/systemd/system/{{ app_name }}.service 
 
@@ -46,6 +51,11 @@
 - name: start systemd app service
   become: yes
   systemd: name={{ app_name }} state=restarted enabled=yes
+  environment:
+    database_user: app_db_user
+    database_password: strongpassword123
+    database_name: flaskappdevappdb 
+    database_host: flaskappdevappdb.cletojvm70fs.eu-west-3.rds.amazonaws.com
 
 #- name: start systemd
 #  become: yes
@@ -59,9 +69,9 @@
     dest: /etc/nginx/conf.d/edu-flask-app.conf
   notify: reload nginx
 
-#- name: open firewall for nginx
-#  become: yes
-#  ufw:
-#    rule: allow
-#    name: Nginx Full
-#  notify: reload nginx
+- name: open firewall for nginx
+  become: yes
+  ufw:
+    rule: allow
+    name: Nginx Full
+  notify: reload nginx

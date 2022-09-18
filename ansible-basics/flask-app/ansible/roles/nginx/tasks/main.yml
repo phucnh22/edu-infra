@@ -30,6 +30,8 @@
       - python3-certbot-nginx
     state: present
 
+### WARNING, TODO: FIND A WAY TO REUSE OLD CERTIFICATE 
+### BECAUSE YOU WILL NOT ABLE TO GENERATE NEW ONE 5 TIMES A WEEK
 - name: install certbot certificates and auto-renewal
   shell: certbot --nginx -m {{ ssl_email }} --agree-tos -d {{ domain_name }} --non-interactive
 
